@@ -32,8 +32,16 @@ namespace QuartzWithCore.Controllers
              .WithPriority(1)
              .Build();
 
+            IDictionary<string, object> map = new Dictionary<string, object>()
+            {
+                {"Current Date Time", $"{DateTime.Now}" },
+                {"Tickets needed", $"5" },
+                {"Concert Name", $"Rock" }
+            };
+
             IJobDetail job = JobBuilder.Create<CheckAvailabilityTask>()
                         .WithIdentity("Check Availability")
+                        .SetJobData(new JobDataMap(map))
                         .Build();
 
             await _scheduler.ScheduleJob(job, trigger);

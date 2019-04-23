@@ -11,7 +11,11 @@ namespace QuartzWithCore.Tasks
         {
             try
             {
-                Debug.WriteLine("Tickets to the concert are available");
+                var dataMap = context.JobDetail.JobDataMap;
+                var timeRequested = dataMap.GetDateTime("Current Date Time");
+                var ticketsNeeded = dataMap.GetInt("Tickets needed");
+                var concertName = dataMap.GetString("Concert Name");
+                Debug.WriteLine($"{ticketsNeeded} Tickets to the {concertName} concert on {timeRequested.ToString("MM-dd-yyyy")} are available");
             }
             catch (Exception ex)
             {

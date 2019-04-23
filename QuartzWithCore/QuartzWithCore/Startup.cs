@@ -35,7 +35,7 @@ namespace QuartzWithCore
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddSingleton(provider => GetScheduler());
+            services.AddSingleton(provider => GetScheduler().Result);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,18 +63,27 @@ namespace QuartzWithCore
             });
         }
 
-        private IScheduler GetScheduler()
+        private async Task<IScheduler> GetScheduler()
         {
             var properties = new NameValueCollection
             {
-                ["quartz.scheduler.instanceName"] = "QuartzWithCore",
-                ["quartz.threadPool.type"] = "Quartz.Simpl.SimpleThreadPool, Quartz",
-                ["quartz.threadPool.threadCount"] = "3",
-                ["quartz.jobStore.type"] = "Quartz.Simpl.RAMJobStore, Quartz",
+                { "quartz.scheduler.instanceName", "QuartzWithCore" },
+                { "quartz.scheduler.instanceId", "QuartzWithCore" },
+                { "quartz.jobStore.type", "Quartz.Impl.AdoJobStore.JobStoreTX, Quartz" },
+                { "quartz.jobStore.useProperties", "true" },
+                { "quartz.jobStore.dataSource", "default" },
+                { "quartz.jobStore.tablePrefix", "QRTZ_" },
+                {
+                    "quartz.dataSource.default.connectionString",
+                    "Server=(database server);Database=(database name);Trusted_Connection=true;"
+                },
+                { "quartz.dataSource.default.provider", "SqlServer" },
+                { "quartz.threadPool.threadCount", "1" },
+                { "quartz.serializer.type", "json" },
             };
-            var schedulerFactory = new StdSchedulerFactory();
-            var scheduler = schedulerFactory.GetScheduler().Result;
-            scheduler.Start();
+            var schedulerFactory = new StdSchedulerFactory(properties);
+            var scheduler = await schedulerFactory.GetScheduler();
+            await scheduler.Start();
             return scheduler;
         }
     }
