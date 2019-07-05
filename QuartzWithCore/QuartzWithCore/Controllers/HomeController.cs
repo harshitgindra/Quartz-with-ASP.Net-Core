@@ -48,6 +48,27 @@ namespace QuartzWithCore.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> ReserveTickets()
+        {
+            ITrigger trigger = TriggerBuilder.Create()
+             .WithIdentity($"Reserve Tickets-{DateTime.Now}")
+             .StartAt(new DateTimeOffset(DateTime.Now.AddSeconds(5)))
+             .WithPriority(1)
+             .Build();
+
+            IDictionary<string, object> map = new Dictionary<string, object>()
+            {
+            };
+
+            IJobDetail job = JobBuilder.Create<ReserveTicketsTask>()
+                        .WithIdentity("Reserve Tickets")
+                        .SetJobData(new JobDataMap(map))
+                        .Build();
+
+            await _scheduler.ScheduleJob(job, trigger);
+            return RedirectToAction("Index");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
