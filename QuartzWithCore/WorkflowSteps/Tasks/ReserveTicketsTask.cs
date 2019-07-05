@@ -1,11 +1,9 @@
 ﻿using Quartz;
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
-using WorkflowSteps;
 using WorkflowSteps.Interface;
 
-namespace QuartzWithCore.Tasks
+namespace WorkflowSteps.Tasks
 {
     public class ReserveTicketsTask : IJob
     {

@@ -66,21 +66,21 @@ namespace QuartzWithCore
             {
                 { "quartz.scheduler.instanceName", "QuartzWithCore" },
                 { "quartz.scheduler.instanceId", "QuartzWithCore" },
-                //{ "quartz.jobStore.type", "Quartz.Impl.AdoJobStore.JobStoreTX, Quartz" },
-                //{ "quartz.jobStore.useProperties", "true" },
-                //{ "quartz.jobStore.dataSource", "default" },
-                //{ "quartz.jobStore.tablePrefix", "QRTZ_" },
-                //{
-                //    "quartz.dataSource.default.connectionString",
-                //    "Server=(database server);Database=(database name);Trusted_Connection=true;"
-                //},
-                //{ "quartz.dataSource.default.provider", "SqlServer" },
-                //{ "quartz.threadPool.threadCount", "1" },
-                //{ "quartz.serializer.type", "json" },
+                { "quartz.jobStore.type", "Quartz.Impl.AdoJobStore.JobStoreTX, Quartz" },
+                { "quartz.jobStore.useProperties", "true" },
+                { "quartz.jobStore.dataSource", "default" },
+                { "quartz.jobStore.tablePrefix", "QRTZ_" },
+                {
+                    "quartz.dataSource.default.connectionString",
+                    "Server=dev\\SQLEXPRESS;Database=Tyson;Trusted_Connection=true;"
+                },
+                { "quartz.dataSource.default.provider", "SqlServer" },
+                { "quartz.threadPool.threadCount", "1" },
+                { "quartz.serializer.type", "json" },
             };
             var schedulerFactory = new StdSchedulerFactory(properties);
             var scheduler = await schedulerFactory.GetScheduler();
-            await scheduler.Start();
+            //await scheduler.Start();
             return scheduler;
         }
     }
