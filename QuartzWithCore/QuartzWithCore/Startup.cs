@@ -80,7 +80,7 @@ namespace QuartzWithCore
             };
             var schedulerFactory = new StdSchedulerFactory(properties);
             var scheduler = await schedulerFactory.GetScheduler();
-            //await scheduler.Start();
+            await scheduler.Start();
             return scheduler;
         }
     }

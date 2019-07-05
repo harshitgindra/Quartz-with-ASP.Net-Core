@@ -52,7 +52,7 @@ namespace QuartzWithCore.Controllers
         {
             ITrigger trigger = TriggerBuilder.Create()
              .WithIdentity($"Reserve Tickets-{DateTime.Now}")
-             .StartAt(new DateTimeOffset(DateTime.Now.AddSeconds(5)))
+             .StartNow()
              .WithPriority(1)
              .Build();
 
