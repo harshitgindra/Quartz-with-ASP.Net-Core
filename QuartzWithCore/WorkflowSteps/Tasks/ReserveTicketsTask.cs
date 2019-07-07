@@ -1,20 +1,23 @@
 ﻿using Quartz;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity;
 using WorkflowSteps.Interface;
 
 namespace WorkflowSteps.Tasks
 {
     public class ReserveTicketsTask : IJob
     {
-        private IStep[] _workflowSteps;
+        private List<IStep> _workflowSteps;
         public ReserveTicketsTask()
         {
-            _workflowSteps = new IStep[3]
+            var container = new UnityContainer();
+            _workflowSteps = new List<IStep>
             {
-                new GetPriceStep(),
-                new ReserveTickets(),
-                new PrintReceiptStep(),
+                container.Resolve<GetPriceStep>(),
+                container.Resolve<ReserveTickets>(),
+                container.Resolve<PrintReceiptStep>(),
             };
         }
 

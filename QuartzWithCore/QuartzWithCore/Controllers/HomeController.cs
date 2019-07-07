@@ -61,7 +61,7 @@ namespace QuartzWithCore.Controllers
             };
 
             IJobDetail job = JobBuilder.Create<ReserveTicketsTask>()
-                        .WithIdentity("Reserve Tickets")
+                        .WithIdentity($"Reserve Tickets:{DateTime.Now.Ticks}")
                         .SetJobData(new JobDataMap(map))
                         .Build();
 

@@ -9,6 +9,7 @@ using Quartz;
 using Quartz.Impl;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
+using WorkflowSteps;
 
 namespace QuartzWithCore
 {
@@ -33,6 +34,9 @@ namespace QuartzWithCore
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton(provider => GetScheduler().Result);
+            services.AddSingleton<GetPriceStep>();
+            services.AddSingleton<ReserveTickets>();
+            services.AddSingleton<PrintReceiptStep>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +84,7 @@ namespace QuartzWithCore
             };
             var schedulerFactory = new StdSchedulerFactory(properties);
             var scheduler = await schedulerFactory.GetScheduler();
-            await scheduler.Start();
+            //await scheduler.Start();                                                                                  
             return scheduler;
         }
     }
