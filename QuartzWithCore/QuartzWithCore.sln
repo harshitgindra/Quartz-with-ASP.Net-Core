@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuartzWithCore", "QuartzWithCore\QuartzWithCore.csproj", "{362C27F1-8955-43C1-8EF1-0AAF9798E658}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkflowSteps", "WorkflowSteps\WorkflowSteps.csproj", "{0FA72B33-E377-4604-8A0A-CF7D01384B7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{7ACC0DEF-1F03-4EAC-861C-D7B8BF9358A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{362C27F1-8955-43C1-8EF1-0AAF9798E658}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{362C27F1-8955-43C1-8EF1-0AAF9798E658}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{362C27F1-8955-43C1-8EF1-0AAF9798E658}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0FA72B33-E377-4604-8A0A-CF7D01384B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0FA72B33-E377-4604-8A0A-CF7D01384B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0FA72B33-E377-4604-8A0A-CF7D01384B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0FA72B33-E377-4604-8A0A-CF7D01384B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ACC0DEF-1F03-4EAC-861C-D7B8BF9358A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ACC0DEF-1F03-4EAC-861C-D7B8BF9358A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ACC0DEF-1F03-4EAC-861C-D7B8BF9358A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ACC0DEF-1F03-4EAC-861C-D7B8BF9358A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
